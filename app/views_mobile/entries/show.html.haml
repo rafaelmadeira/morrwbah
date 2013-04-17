@@ -1,0 +1,15 @@
+.view-entry{:id => "entry-#{@entry.id}", :data => {:role => 'page', :theme => jquery_mobile_theme, :url => '/dashboard'}}
+  %div{:data => { :role => 'header', :position=>"fixed" }}
+    .control.ui-btn-left{:data => { :role=>"controlgroup", :type=>"horizontal", :mini=>"true"}}
+      %a.prev{:href=>"#", :data => {:role=>"button", :icon=>"arrow-l", :iconpos=>"notext"}} Previous
+      %a.next{:href=>"#", :data => {:role=>"button", :icon=>"arrow-r", :iconpos=>"notext"}} Next
+    %h1=params[:title] || @entry.feed.title
+
+  %div{:data => { :role => 'content', :theme=>'c' }}
+    .entry-title=link_to @entry.title.html_safe, @entry.url, :target => '_blank'
+    .entry-meta
+      ="by #{@entry.author}" if @entry.author
+      ="#{time_ago_in_words(@entry.published)} ago"
+
+    .entry-body=@entry.body.html_safe
+    .clearboth

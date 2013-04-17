@@ -13,4 +13,8 @@ module ApplicationHelper
     end
     html.html_safe
   end
+
+  def jquery_mobile_theme
+    'a'
+  end
 end
