@@ -1,4 +1,4 @@
-#entry-list{:data => {:role => 'page', :theme => jquery_mobile_theme, :url => '/dashboard', :entry_list => @lister.entries.map(&:id).join(',') }}
+#entry-list{:data => {:role => 'page', :dom_cache => true, :theme => jquery_mobile_theme, :url => '/dashboard', :entry_ids => @lister.entries.map(&:id).join(',') }}
   %div{:data => { :role => 'header', :position=>"fixed" }}
     %h1=@lister.title
   %div{:data => { :role => 'content' }}

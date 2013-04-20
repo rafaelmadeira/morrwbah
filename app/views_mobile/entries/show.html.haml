@@ -1,4 +1,4 @@
-.view-entry{:id => "entry-#{@entry.id}", :data => {:role => 'page', :theme => jquery_mobile_theme, :url => '/dashboard'}}
+.view-entry{:id => "entry-#{@entry.id}", :data => {:role => 'page', :id => @entry.id, :theme => jquery_mobile_theme, :url => '/dashboard'}}
   %div{:data => { :role => 'header', :position=>"fixed" }}
     .control.ui-btn-left{:data => { :role=>"controlgroup", :type=>"horizontal", :mini=>"true"}}
       %a.prev{:href=>"#", :data => {:role=>"button", :icon=>"arrow-l", :iconpos=>"notext"}} Previous
