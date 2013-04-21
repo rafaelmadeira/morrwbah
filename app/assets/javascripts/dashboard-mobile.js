@@ -4,7 +4,20 @@ $( document ).on( "pageinit", "[data-role='page']#entry-list", function() {
   entry_ids = $(this).data('entry-ids').toString().split(",");
 });
 
-$( document ).on( "pageinit", "[data-role='page'].view-entry", function() {
+$(document).ready(function() {
+  $.ajaxSetup({
+    'beforeSend': function(xhr) {
+      xhr.setRequestHeader('X-CSRF-Token', $("meta[name='csrf-token']").attr('content'));
+    }
+  });
+  
+});
+
+$(document).on("pageinit", "[data-role='page'].view-entry", function() {
+  $('.view-entry').on('click', '.mark-read', function() {
+    console.log('here');
+  });
+
   var current_id = $(this).data("id");
   entry_list_url_params = $(this).data("entry-list-url-params");
   var page = "#" + $( this ).attr("id");
@@ -45,3 +58,12 @@ $( document ).on( "pageinit", "[data-role='page'].view-entry", function() {
   }
 
 });
+
+function updateEntry(entry_id, data) {
+  var params = {'_method': 'put', 'entry': data};
+  $.ajax({
+    url: '/entries/'+entry_id, 
+    type: 'POST', 
+    data: params
+  }).done(function() { });
+}

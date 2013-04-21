@@ -24,7 +24,7 @@
             =folder.name
             -if folder.unread_count > 0
               %span.ui-li-count=folder.unread_count
-        -folder.feeds.each do |feed|
+        -folder.feeds.order(:position).each do |feed|
           %li.feed
             %a{:href => entries_dashboard_index_path(:id => feed.id, :type => 'feed', :filter => 'unread')}
               %div

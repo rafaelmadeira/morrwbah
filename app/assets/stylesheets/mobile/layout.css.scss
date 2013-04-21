@@ -3,3 +3,13 @@
     display: none;
   }
 }
+
+#entry-list ul {
+  li.read a {
+    font-weight: normal;
+  }
+
+  li.unread a {
+    font-weight: bold;
+  }
+}
