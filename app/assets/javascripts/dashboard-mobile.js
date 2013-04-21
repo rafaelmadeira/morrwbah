@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 $(document).on("pageinit", "[data-role='page'].view-entry", function() {
   $('.view-entry').on('click', '.mark-read', function() {
-    console.log('here');
+    
   });
 
   var current_id = $(this).data("id");
@@ -35,7 +35,8 @@ $(document).on("pageinit", "[data-role='page'].view-entry", function() {
 
   if (next > 0) {
     var next_url = "/entries/"+next+"/?"+entry_list_url_params;
-    $( document ).on( "swipeleft", page, function() {
+    // $( document ).on( "swipeleft", page, function() {
+    $( page ).on( "swipeleft", function() {
       $.mobile.changePage(next_url, { transition: "slide" });
     });
     $( ".control .next", page ).on( "click", function() {
@@ -47,7 +48,8 @@ $(document).on("pageinit", "[data-role='page'].view-entry", function() {
 
   if (prev > 0) {
     var prev_url = "/entries/"+prev+"/?"+entry_list_url_params;
-    $( document ).on( "swiperight", page, function() {
+    // $( document ).on( "swiperight", page, function() {
+    $( page ).on( "swiperight", function() {
       $.mobile.changePage(prev_url, { transition: "slide", reverse: true } );
     });
     $( ".control .prev", page ).on( "click", function() {
