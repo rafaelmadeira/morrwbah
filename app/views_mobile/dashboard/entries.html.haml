@@ -1,4 +1,4 @@
-#entry-list{:data => {:role => 'page', :dom_cache => true, :theme => jquery_mobile_theme, :url => '/dashboard/entries', :entry_ids => @lister.entries.map(&:id).join(',') }}
+= jquery_mobile_page(:id => "entry-list", :data => {:entry_ids => @lister.entries.map(&:id).join(',') }) do
   %div{:data => { :role => 'header', :position=>"fixed" }}
     -back_button_data = {:shadow=>"false", :iconshadow=>"false", :icon=>"arrow-l", :iconpos=>"notext"}
     =link_to "Back", dashboard_index_path, :data => back_button_data

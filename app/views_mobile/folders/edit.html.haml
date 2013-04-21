@@ -1,4 +1,4 @@
-#settings{:data => {:role => 'page', :theme => jquery_mobile_theme, :url => "/folders/#{@folder.id}/edit" }}
+=jquery_mobile_page(:id => "edit-folder") do
   %div{:data => { :role => 'header', :position=>"fixed" }}
     -back_button_data = {:shadow=>"false", :iconshadow=>"false", :icon=>"arrow-l", :iconpos=>"notext"}
     =link_to "Back", settings_dashboard_index_path, :data => back_button_data

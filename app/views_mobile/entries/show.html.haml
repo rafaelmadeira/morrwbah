@@ -1,4 +1,4 @@
-.view-entry{:id => "entry-#{@entry.id}", :data => {:role => 'page', :id => @entry.id, :theme => jquery_mobile_theme, :url => '/entries', :entry_list_url_params => "identifier=#{params[:identifier]}&filter=#{params[:filter]}&type=#{params[:type]}"}}
+= jquery_mobile_page(:class => "view-entry", :id => "entry-#{@entry.id}", :data => {:id => @entry.id, :entry_list_url_params => "identifier=#{params[:identifier]}&filter=#{params[:filter]}&type=#{params[:type]}"}) do
   %div{:data => { :role => 'header', :position=>"fixed", :id=>'view-entry-header', :tag_toggle=>'false' }}
     -back_button_data = {:shadow=>"false", :iconshadow=>"false", :icon=>"arrow-l", :iconpos=>"notext"}
     =link_to "Back", entries_dashboard_index_path(:id => params[:identifier], :type => params[:type], :filter => params[:filter]), :data => back_button_data
