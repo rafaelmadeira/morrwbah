@@ -1,10 +1,9 @@
 = jquery_mobile_page(:id => "settings") do
-  %div{:data => { :role => 'header', :position=>"fixed" }}
-    -back_button_data = {:shadow=>"false", :iconshadow=>"false", :icon=>"arrow-l", :iconpos=>"notext"}
-    =link_to "Back", dashboard_index_path, :data => back_button_data
+  = jquery_mobile_header do
+    = jquery_mobile_back_button dashboard_index_path
     %h1 My Own RSS Reader
 
-  %div{:data => { :role => 'content' }}
+  = jquery_mobile_content do
     %h2 User Accounts
     %ul{:data => { :role=>"listview", :inset=>"true"}}
       -@users.each do |user|

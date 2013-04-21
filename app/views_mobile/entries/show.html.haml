@@ -1,13 +1,12 @@
 = jquery_mobile_page(:class => "view-entry", :id => "entry-#{@entry.id}", :data => {:id => @entry.id, :entry_list_url_params => "identifier=#{params[:identifier]}&filter=#{params[:filter]}&type=#{params[:type]}"}) do
-  %div{:data => { :role => 'header', :position=>"fixed", :id=>'view-entry-header', :tag_toggle=>'false' }}
-    -back_button_data = {:shadow=>"false", :iconshadow=>"false", :icon=>"arrow-l", :iconpos=>"notext"}
-    =link_to "Back", entries_dashboard_index_path(:id => params[:identifier], :type => params[:type], :filter => params[:filter]), :data => back_button_data
+  = jquery_mobile_header(:data => { :id=>'view-entry-header', :tag_toggle=>'false' }) do
+    = jquery_mobile_back_button entries_dashboard_index_path(:id => params[:identifier], :type => params[:type], :filter => params[:filter])
     .control.ui-btn-right{:data => { :role=>"controlgroup", :type=>"horizontal", :mini=>"true"}}
       %a.prev{:href=>"#", :data => {:role=>"button", :icon=>"arrow-l", :iconpos=>"notext"}} Previous
       %a.next{:href=>"#", :data => {:role=>"button", :icon=>"arrow-r", :iconpos=>"notext"}} Next
     %h1=params[:title] || @entry.feed.title
 
-  %div{:data => { :role => 'content', :fullscreen=>'true' }}
+  = jquery_mobile_content(:data => {:fullscreen=>'true'}) do
     .entry-title=link_to @entry.title.html_safe, @entry.url, :target => '_blank'
     .entry-meta
       ="by #{@entry.author}" if @entry.author
@@ -15,5 +14,5 @@
 
     .entry-body=@entry.body.html_safe
     .clearboth
-  %div{:data => { :role => 'footer', :position=>"fixed", :id=>'view-entry-footer', :tap_toggle=>'false' }}
+  = jquery_mobile_footer(:data => {:id=>'view-entry-footer', :tap_toggle=>'false'}) do
     %h1 Footer

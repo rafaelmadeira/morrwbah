@@ -1,9 +1,8 @@
 =jquery_mobile_page(:id => "edit-user") do
-  %div{:data => { :role => 'header', :position=>"fixed" }}
-    -back_button_data = {:shadow=>"false", :iconshadow=>"false", :icon=>"arrow-l", :iconpos=>"notext"}
-    =link_to "Back", settings_dashboard_index_path, :data => back_button_data
+  = jquery_mobile_header do
+    = jquery_mobile_back_button settings_dashboard_index_path
     %h1=@user.login
   
-  %div{:data => {:role => 'content'}}
+  = jquery_mobile_content do
     = render :partial => "form"
  

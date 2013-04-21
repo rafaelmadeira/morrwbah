@@ -1,10 +1,10 @@
 = jquery_mobile_page(:id => "feed-list") do
-  %div{:data => { :role => 'header', :position=>"fixed" }}
+  = jquery_mobile_header do
     %h1 My Own RSS Reader
     .control.ui-btn-right{:data => { :role=>"controlgroup", :type=>"horizontal", :mini=>"true"}}
       %a{:href=>"/dashboard/settings", :data => { :role=>"button", :icon=>"gear", :iconpos=>"notext"}} Settings
 
-  %div{:data => { :role => 'content' }}
+  = jquery_mobile_content do
     %ul{:data => { :role=>"listview", :count_theme=>"c", :inset=>"true"}}
       %li
         -unread_count = current_user.all_feeds_unread_count

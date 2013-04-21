@@ -1,9 +1,8 @@
 = jquery_mobile_page(:id => "entry-list", :data => {:entry_ids => @lister.entries.map(&:id).join(',') }) do
-  %div{:data => { :role => 'header', :position=>"fixed" }}
-    -back_button_data = {:shadow=>"false", :iconshadow=>"false", :icon=>"arrow-l", :iconpos=>"notext"}
-    =link_to "Back", dashboard_index_path, :data => back_button_data
+  = jquery_mobile_header do
+    =jquery_mobile_back_button dashboard_index_path
     %h1=@lister.title
-  %div{:data => { :role => 'content' }}
+  =jquery_mobile_content do
     -if @lister.entries.blank?
       #no-entries
         ="No #{['unread','starred'].include?(@lister.filter) ? @lister.filter : nil} entries found for #{@lister.title}"
