@@ -1,5 +1,7 @@
-#entry-list{:data => {:role => 'page', :dom_cache => true, :theme => jquery_mobile_theme, :url => '/dashboard', :entry_ids => @lister.entries.map(&:id).join(',') }}
+#entry-list{:data => {:role => 'page', :dom_cache => true, :theme => jquery_mobile_theme, :url => '/dashboard/entries', :entry_ids => @lister.entries.map(&:id).join(',') }}
   %div{:data => { :role => 'header', :position=>"fixed" }}
+    -back_button_data = {:shadow=>"false", :iconshadow=>"false", :icon=>"arrow-l", :iconpos=>"notext"}
+    =link_to "Back", dashboard_index_path, :data => back_button_data
     %h1=@lister.title
   %div{:data => { :role => 'content' }}
     -if @lister.entries.blank?
@@ -12,4 +14,4 @@
           -classes << (entry.read ? 'read' : 'unread')
           -classes << (entry.starred ? 'starred' : 'unstarred')
           %li.entry{:class => classes.join(' ')}
-            =link_to entry.title.html_safe, entry_path(entry)
+            =link_to entry.title.html_safe, entry_path(entry, :type => @lister.type, :filter => @lister.filter, :identifier => @lister.identifier)

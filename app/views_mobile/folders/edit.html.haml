@@ -1,0 +1,12 @@
+#settings{:data => {:role => 'page', :theme => jquery_mobile_theme, :url => "/dashboard/folder/#{@folder.id}/edit" }}
+  %div{:data => { :role => 'header', :position=>"fixed" }}
+    -back_button_data = {:shadow=>"false", :iconshadow=>"false", :icon=>"arrow-l", :iconpos=>"notext"}
+    =link_to "Back", settings_dashboard_index_path, :data => back_button_data
+    %h1=@folder.name
+  
+  %div{:data => { :role => 'content'}}
+    = link_to "Delete", folder_path(@folder), :method=>"delete", :data => {:role=>'button', :icon=>"delete", :confirm => "Are you sure?"}
+    = form_for @folder do |f|
+      = f.label :name
+      = f.text_field :name
+      = f.submit "Update Folder"

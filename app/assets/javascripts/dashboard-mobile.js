@@ -1,10 +1,12 @@
 entry_ids = [];
+entry_list_url_params = "";
 $( document ).on( "pageinit", "[data-role='page']#entry-list", function() {
-  entry_ids = $(this).data('entry-ids').split(",");
+  entry_ids = $(this).data('entry-ids').toString().split(",");
 });
 
 $( document ).on( "pageinit", "[data-role='page'].view-entry", function() {
-  var current_id = $(this).data("id"); 
+  var current_id = $(this).data("id");
+  entry_list_url_params = $(this).data("entry-list-url-params");
   var page = "#" + $( this ).attr("id");
   var current_pos = $.inArray(current_id.toString(), entry_ids);
   var next = 0;
@@ -19,7 +21,7 @@ $( document ).on( "pageinit", "[data-role='page'].view-entry", function() {
   }
 
   if (next > 0) {
-    var next_url = "/entries/"+next;
+    var next_url = "/entries/"+next+"/?"+entry_list_url_params;
     $( document ).on( "swipeleft", page, function() {
       $.mobile.changePage(next_url, { transition: "slide" });
     });
@@ -31,7 +33,7 @@ $( document ).on( "pageinit", "[data-role='page'].view-entry", function() {
   }
 
   if (prev > 0) {
-    var prev_url = "/entries/"+prev;
+    var prev_url = "/entries/"+prev+"/?"+entry_list_url_params;
     $( document ).on( "swiperight", page, function() {
       $.mobile.changePage(prev_url, { transition: "slide", reverse: true } );
     });

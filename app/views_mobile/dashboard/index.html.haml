@@ -1,6 +1,8 @@
 #feed-list{:data => {:role => 'page', :theme => jquery_mobile_theme, :url => '/dashboard' }}
   %div{:data => { :role => 'header', :position=>"fixed" }}
     %h1 My Own RSS Reader
+    .control.ui-btn-right{:data => { :role=>"controlgroup", :type=>"horizontal", :mini=>"true"}}
+      %a{:href=>"/dashboard/settings", :data => { :role=>"button", :icon=>"gear", :iconpos=>"notext"}} Settings
 
   %div{:data => { :role => 'content' }}
     %ul{:data => { :role=>"listview", :count_theme=>"c", :inset=>"true"}}

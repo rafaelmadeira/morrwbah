@@ -1,0 +1,14 @@
+#settings{:data => {:role => 'page', :theme => jquery_mobile_theme, :url => "/dashboard/users/#{@user.id}/edit" }}
+  %div{:data => { :role => 'header', :position=>"fixed" }}
+    -back_button_data = {:shadow=>"false", :iconshadow=>"false", :icon=>"arrow-l", :iconpos=>"notext"}
+    =link_to "Back", settings_dashboard_index_path, :data => back_button_data
+    %h1=@user.login
+  
+  %div{:data => {:role => 'content'}}
+    =form_for @user do |f|
+      =f.label :password, 'Reset password'
+      =f.password_field :password
+      =f.label :password_confirmation
+      =f.password_field :password_confirmation
+      =f.button "Update Account"
+ 

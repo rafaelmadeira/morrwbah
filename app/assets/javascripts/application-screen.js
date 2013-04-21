@@ -16,4 +16,4 @@
 //= require jquery.mjs.nestedSortable
 //= require jquery.hotkeys
 //= require dashboard
-//= require dashboard-function
+//= require dashboard-functions

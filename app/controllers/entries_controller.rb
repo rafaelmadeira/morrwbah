@@ -1,5 +1,9 @@
 class EntriesController < ApplicationController
-  before_action :set_feed_and_entry
+  before_action :set_feed_and_entry, :except => :index
+
+  def index
+    redirect_to dashboard_index_path
+  end
 
   def show
     render :layout => nil
