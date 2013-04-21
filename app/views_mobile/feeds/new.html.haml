@@ -1,9 +1,8 @@
-#settings{:data => {:role => 'page', :theme => jquery_mobile_theme, :url => "/feeds/#{@feed.id}/edit" }}
+#settings{:data => {:role => 'page', :theme => jquery_mobile_theme, :url => "/feeds/new" }}
   %div{:data => { :role => 'header', :position=>"fixed" }}
     -back_button_data = {:shadow=>"false", :iconshadow=>"false", :icon=>"arrow-l", :iconpos=>"notext"}
     =link_to "Back", settings_dashboard_index_path, :data => back_button_data
-    %h1=@feed.title
+    %h1 New Feed
   
   %div{:data => { :role => 'content'}}
-    = link_to "Unsubscribe", feed_path(@feed), :method=>"delete", :data => {:role=>'button', :icon=>"delete", :confirm => "Are you sure?"}
     = render :partial => "form"

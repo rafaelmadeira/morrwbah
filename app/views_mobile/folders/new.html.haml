@@ -1,0 +1,15 @@
+#settings{:data => {:role => 'page', :theme => jquery_mobile_theme, :url => "/folders/new" }}
+  %div{:data => { :role => 'header', :position=>"fixed" }}
+    -back_button_data = {:shadow=>"false", :iconshadow=>"false", :icon=>"arrow-l", :iconpos=>"notext"}
+    =link_to "Back", settings_dashboard_index_path, :data => back_button_data
+    %h1 New Folder
+  
+  %div{:data => { :role => 'content'}}
+    = error_messages_for @folder
+    = form_for @folder, :html => { :class => "formarea" } do |f|
+      %div
+        = f.label :name
+        = f.text_field :name
+      %div
+        %label.padding &nbsp;
+        = f.submit

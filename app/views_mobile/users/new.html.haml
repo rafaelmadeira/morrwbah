@@ -1,8 +1,8 @@
-#settings{:data => {:role => 'page', :theme => jquery_mobile_theme, :url => "/users/#{@user.id}/edit" }}
+#settings{:data => {:role => 'page', :theme => jquery_mobile_theme, :url => "/users/new" }}
   %div{:data => { :role => 'header', :position=>"fixed" }}
     -back_button_data = {:shadow=>"false", :iconshadow=>"false", :icon=>"arrow-l", :iconpos=>"notext"}
     =link_to "Back", settings_dashboard_index_path, :data => back_button_data
-    %h1=@user.login
+    %h1 New User
   
   %div{:data => {:role => 'content'}}
     = render :partial => "form"
