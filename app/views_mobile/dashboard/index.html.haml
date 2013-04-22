@@ -1,6 +1,7 @@
 = jquery_mobile_page(:id => "feed-list") do
   = jquery_mobile_header do
     %h1 My Own RSS Reader
+    .ui-btn-left=link_to "Logout", logout_path, :data=>{:role => 'button', :confirm => "Are you sure you want to logout?"}
     .control.ui-btn-right{:data => { :role=>"controlgroup", :type=>"horizontal", :mini=>"true"}}
       %a{:href=>"/dashboard/settings", :data => { :role=>"button", :icon=>"gear", :iconpos=>"notext"}} Settings
 

@@ -15,7 +15,29 @@ $(document).ready(function() {
 
 $(document).on("pageinit", "[data-role='page'].view-entry", function() {
   $('.view-entry').on('click', '.mark-read', function() {
-    
+    var $entry = $(this);
+    if ($entry.hasClass('unread')) {
+      $entry.removeClass('unread').addClass('read');
+      $(this).find('img').attr('src', '/images/silk/icons/email_open.png');
+      updateEntry($entry.data('id'), {"read": true});
+    } else {
+      $entry.removeClass('read').addClass('unread');
+      $(this).find('img').attr('src', '/images/silk/icons/email.png');
+      updateEntry($entry.data('id'), {"read": false});
+    }
+  });
+
+  $('.view-entry').on('click', '.mark-starred', function() {
+    var $entry = $(this);
+    if ($entry.hasClass('unstarred')) {
+      $entry.removeClass('unstarred').addClass('starred');
+      $(this).find('img').attr('src', '/images/silk/icons/star.png');
+      updateEntry($entry.data('id'), {"starred": true});
+    } else {
+      $entry.removeClass('starred').addClass('unstarred');
+      $(this).find('img').attr('src', '/images/silk/icons/star_gray.png');
+      updateEntry($entry.data('id'), {"starred": false});
+    }
   });
 
   var current_id = $(this).data("id");

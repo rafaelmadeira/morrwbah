@@ -61,7 +61,7 @@ module ApplicationHelper
   
   def jquery_mobile_back_button(path, options = {})
     data = {:shadow=>"false", :iconshadow=>"false", :icon=>"arrow-l", :iconpos=>"notext"}.merge(options[:data] || {})
-    link_to "Back", path, :data => data
+    link_to("Back", path, :data => data)
   end
 
 end

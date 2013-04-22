@@ -1,4 +1,4 @@
-= jquery_mobile_page(:id => "entry-list", :data => {:entry_ids => @lister.entries.map(&:id).join(',') }) do
+= jquery_mobile_page(:id => "entry-list", :data => {:entry_ids => @lister.entries.map(&:id).join(','), :url => "/dashboard/entries"}) do
   = jquery_mobile_header do
     =jquery_mobile_back_button dashboard_index_path
     %h1=@lister.title
@@ -13,4 +13,4 @@
           -classes << (entry.read ? 'read' : 'unread')
           -classes << (entry.starred ? 'starred' : 'unstarred')
           %li.entry{:class => classes.join(' ')}
-            =link_to entry.title.html_safe, entry_path(entry, :type => @lister.type, :filter => @lister.filter, :identifier => @lister.identifier)
+            =link_to entry.title.html_safe, entry_path(entry, :type => @lister.type, :filter => @lister.filter, :identifier => @lister.identifier, :mark_read => "true")
